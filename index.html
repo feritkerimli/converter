@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Converter</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./img/logo_img.svg" alt="Logo of website">            
+        </div>
+        <div class="menu">
+            <div class="menu-elem first-menu-elem">BANK</div>
+            <div class="menu-elem">BUSINESS</div>
+            <div class="menu-elem">INVESTMENTS</div>
+            <div class="menu-elem">INSURANCE</div>
+            <div class="menu-elem">MOBILE</div>
+            <div class="menu-elem">TRIPS</div>
+            <div class="menu-elem">ENTERTAINMENT</div>
+        </div>
+        <div class="sign-up">
+            <button>Sign Up</button>
+        </div>
+        <div class="burger-menu">
+            <img src="./img/burger_icon.png" alt="burger icon">
+        </div>
+    </header>
+    <main>
+        <h1>Online currency converter</h1>
+        <div class="card-container">
+            <div class="card card1">
+                <p>I have</p>
+                <div class="valutes">
+                    <div class="valute-elem selected">RUB</div>
+                    <div class="valute-elem">USD</div>
+                    <div class="valute-elem">EUR</div>
+                    <div class="valute-elem">GBP</div>
+                </div>
+                <div class="input-container">
+                    <input type="text" value="5000">
+                    <p class="valute-info"></p>
+                </div>
+                <p class="not-num-warning">Please use numbers</p>
+            </div>
+            <div class="card card2">
+                <p>I want to buy</p>
+                <div class="valutes">
+                    <div class="valute-elem">RUB</div>
+                    <div class="valute-elem selected">USD</div>
+                    <div class="valute-elem">EUR</div>
+                    <div class="valute-elem">GBP</div>
+                </div>
+                <div class="input-container">
+                    <input type="text">
+                    <p class="valute-info"></p>
+                </div>
+                <p class="not-num-warning">Please use numbers</p>
+            </div>
+            
+        </div>
+        <h3 class="wifi">There is no wifi</h3>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>
