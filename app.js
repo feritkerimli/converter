@@ -25,27 +25,21 @@ function select_valutes(){
         valute_info1.innerHTML='1 '+ valute_from+' = '+ '1 '+ valute_to ;
         valute_info2.innerHTML='1 '+ valute_to+' = ' +'1 '+ valute_from ;
     }else{
-        fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_from}/${valute_to}/1`)
-        .then(response => response.json())
-        .then(data => {
-            valute_info1.innerHTML='1 '+ valute_from+' = '+ data.conversion_result.toFixed(5) +' '+ valute_to ;
-            wifi.style.display='none'
-        })
-        .catch(err => {
-            if (!navigator.onLine) wifi.style.display='block';
-            else wifi.style.display='none';
-        })
-    
-        fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_to}/${valute_from}/1`)
-        .then(response => response.json())
-        .then(data => {
-            valute_info2.innerHTML='1 '+ valute_to+' = '+ data.conversion_result.toFixed(5) +' '+ valute_from ; 
-            wifi.style.display='none'
-        })
-        .catch(err => {
-            if (!navigator.onLine) wifi.style.display='block';
-            else wifi.style.display='none';
-        })
+        if (!navigator.onLine) wifi.style.display='block';
+        else{
+            wifi.style.display='none';
+            fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_from}/${valute_to}/1`)
+            .then(response => response.json())
+            .then(data => {
+                valute_info1.innerHTML='1 '+ valute_from+' = '+ data.conversion_result.toFixed(5) +' '+ valute_to ;
+            })
+            fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_to}/${valute_from}/1`)
+            .then(response => response.json())
+            .then(data => {
+                valute_info2.innerHTML='1 '+ valute_to+' = '+ data.conversion_result.toFixed(5) +' '+ valute_from ; 
+            })
+        }
+        
     }
 }
 //modifications for inputs
@@ -73,21 +67,21 @@ function output_modification(input, amount, valute_from, valute_to){
     else {
         if(valute_from == valute_to) input.value = Number(amount);
         else {
-            fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_from}/${valute_to}/${amount}`)
-            .then(res => res.json())
-            .then((data) => {
-                let output_parts = String(data.conversion_result).split(".");
-                if(output_parts[1] && output_parts[1].length > 5) {
-                    output_parts[1] = output_parts[1].slice(0, 5);
-                    input.value = output_parts[0] + "." + output_parts[1];
-                }
-                else input.value = data.conversion_result;
-                wifi.style.display='none'
-            })
-            .catch(err => {
-                if (!navigator.onLine) wifi.style.display='block';
-                else wifi.style.display='none';
-            })
+            if (!navigator.onLine) wifi.style.display='block';
+            else{
+                wifi.style.display='none';
+                fetch(`https://v6.exchangerate-api.com/v6/${api_key}/pair/${valute_from}/${valute_to}/${amount}`)
+                .then(res => res.json())
+                .then((data) => {
+                    let output_parts = String(data.conversion_result).split(".");
+                    if(output_parts[1] && output_parts[1].length > 5) {
+                        output_parts[1] = output_parts[1].slice(0, 5);
+                        input.value = output_parts[0] + "." + output_parts[1];
+                    }
+                    else input.value = data.conversion_result;
+                    wifi.style.display='none'
+                })
+            }
         }
     }
 }
