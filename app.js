@@ -5,7 +5,7 @@ let card2=document.querySelector(".card2")
 let card2_valute_elem_list = card2.querySelectorAll(".valute-elem");
 let checker_for_input=1;
 //api key
-let api_key = 'ee3b61ee08ada2617e40d4c9';
+let api_key = 'dc1fc447d54500d2a903b9a3';
 // valutes
 let valute_info1 = card1.querySelector(".valute-info");
 let valute_info2 = card2.querySelector(".valute-info");
